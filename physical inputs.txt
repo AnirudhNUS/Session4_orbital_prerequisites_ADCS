@@ -1,0 +1,5 @@
+Value			    Name		Description			        Link
+6371000		    :	Rearth		Radius of the Earth (m)		https://en.wikipedia.org/wiki/Earth
+5.972168E+24	:	Mearth		Mass of the Earth (kg)		https://en.wikipedia.org/wiki/Earth
+6.6743E-11	    :	Gconst		Gravitational Constant (SI)	https://en.wikipedia.org/wiki/Gravitational_constant
+86400		    :	Tday		Time for a day (s)		    https://en.wikipedia.org/wiki/Day

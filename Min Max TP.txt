@@ -1,0 +1,4 @@
+0.16 	: Minimum torque (mNm)
+1.651 	: Maximum torque (mNm)
+201750.0 	: Minimum Angular Momentum (gcm^2 rad/s)
+1326650.0 	: Maximum Angular Momentum (gcm^2 rad/s)
