@@ -1,6 +1,8 @@
 import math
+import numpy as np
 
-def makearray(minval,maxval,num):
+'''
+def makearray(minval,maxval,num):  # not needed as linspace does the same thing
     a = [0.0]*num
 
     for i in range(num):
@@ -10,7 +12,7 @@ def makearray(minval,maxval,num):
     # To include both and have num terms, the difference between them needs to be (max-min)/(num-1)
 
     return a
-
+'''
 ########################################################################################################################################
 
 def getscalers(Rearth, Mearth, Gconst, Tday, h):
@@ -30,7 +32,7 @@ def getWalpha(Hangle, Rearth, h, deltaT):
     # this function returns Wcraft[] and alpha[] for a given height
     # then we can get the max of those in the main function
     r = Rearth + h   # effective orbital radius
-    theta = makearray(math.pi/2 - Hangle, math.pi/2, 102)
+    theta = np.linspace(math.pi/2 - Hangle, math.pi/2, 102)
     elevationAng = [0.0]*102
     elevationAng[101] = math.pi/2
     ratio = 0.0
@@ -58,6 +60,8 @@ def get_TP(Wmax, maxAlpha, moi):
     tdat = open("torque values (mNm).txt", 'w')  # open fresh
     pdat = open("Angular Momentum (g cm2 rad ps).txt", 'w')  # open fresh
     for i in range(11):
+        torque[i] = [0.0]*11
+        Pcraft[i] = [0.0]*11   # Declare again to ensure actual values are saved
         for j in range(11):
             torque[i][j] = round( 1000*maxAlpha[i]*moi[j] ,3)   # torque in mNm
             #print("torque[" + str(i) + "][" + str(j) + "]: " + str(torque[i][j]))
@@ -73,11 +77,11 @@ def get_TP(Wmax, maxAlpha, moi):
     tdat.close()
     pdat.close()
     
-    return # torque, Pcraft
+    return torque, Pcraft
 
 ########################################################################################################################################
 
-def calcMinMax(array):
+def calcMinMax(array):   # to get minimum and maximum values for an 11x11 2D array
     minval = min(array[10])
     maxval = max(array[0])
     temp1 = 0

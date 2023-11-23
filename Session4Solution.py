@@ -55,18 +55,19 @@ print("maxAlpha: ", maxAlpha)
 name = "WA Values.txt"
 writer.write_WA(name, Horbit, Wmax, maxAlpha)
 
-calculator.get_TP(Wmax,maxAlpha,moi)
-
-torque, Pcraft = reader.read_tp()
-
-writer.write_minmaxTP(torque,Pcraft)
+T, P = calculator.get_TP(Wmax,maxAlpha,moi)
 
 '''
 for i in range(11):
     for j in range(11):
-        print("torque[" + str(i) + "][" + str(j) + "]: " + str(torque[i][j]))
-        print("Pcraft[" + str(i) + "][" + str(j) + "]: " + str(Pcraft[i][j]))
-'''
+        print("T[" + str(i) + "][" + str(j) + "]: " + str(T[i][j]))
+        print("P[" + str(i) + "][" + str(j) + "]: " + str(P[i][j]))
+''' 
+# value of T and P is not needed as read_tp() reads it again anyway
+
+torque, Pcraft = reader.read_tp()
+
+writer.write_minmaxTP(torque,Pcraft)
 
 # make 3D plot with torque and pcraft
 
